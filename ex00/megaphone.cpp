@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 15:53:39 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/06/29 17:28:19 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/06/29 18:10:52 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ int	main(int argc, char *argv[]){
 	else{
 		for (int i = 1; i < argc; i++){
 			std::string	str(argv[i]);
-			for (size_t j = 0; j < str.length(); j++)
-				std::cout << (char)std::toupper(str[j]);
+			for (std::string::iterator itr = str.begin();
+				itr != str.end(); ++itr)
+				std::cout << (char)std::toupper(*itr);
 		}
 	}
 	std::cout << std::endl;
