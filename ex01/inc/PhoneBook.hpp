@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 13:42:35 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/07/09 14:38:59 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/07/09 18:20:42 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,15 @@ class	PhoneBook{
 		Contact		contact[8];
 		int			contact_count;
 		int			oldest_index;
-		int			get_actual_index(int index);
 		bool		check_available_char_set(std::string& input);
 		bool		check_available_num_set(std::string& input);
+		bool 		check_blank(std::string& input);
 		void		get_valid_input_char(
 						std::string prompt, std::string& input);
 		void		get_valid_input_num(
 						std::string prompt, std::string& input);
 		bool		confirm_to_del_oldest();
+		int			get_actual_index(int index);
 		std::string	format_column(const std::string& str, size_t width);
 		void		print_raw(const std::string& index,
 						const std::string& first_name,

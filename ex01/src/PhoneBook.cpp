@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:27:27 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/07/09 14:46:04 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/07/09 18:26:33 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,6 @@ bool	PhoneBook::check_available_char_set(std::string& input){
 	return true;
 }
 
-void	PhoneBook::get_valid_input_char(
-			std::string prompt, std::string& input){
-	while (1){
-		std::cout << CYAN << prompt << RESET;
-		w_getline(input);
-		if (input.empty()){
-			std::cout << RED << "This field is required." << RESET << std::endl;
-			continue ;
-		}else if (!check_available_char_set(input))
-			continue ;
-		else
-			break ;
-	}
-}
-
 bool	PhoneBook::check_available_num_set(std::string& input){
 	for (size_t i = 0; i < input.length(); ++i){
 		if (input[i] < '0' || input[i] > '9'){
@@ -57,12 +42,35 @@ bool	PhoneBook::check_available_num_set(std::string& input){
 	return true;
 }
 
+bool PhoneBook::check_blank(std::string& input){
+	for (size_t i = 0; i < input.length(); ++i){
+		if (input[i] != ' ')
+			return false;
+	}
+	return true;
+}
+
+void	PhoneBook::get_valid_input_char(
+			std::string prompt, std::string& input){
+	while (1){
+		std::cout << CYAN << prompt << RESET;
+		w_getline(input);
+		if (input.empty() || check_blank(input)){
+			std::cout << RED << "This field is required." << RESET << std::endl;
+			continue ;
+		}else if (!check_available_char_set(input))
+			continue ;
+		else
+			break ;
+	}
+}
+
 void	PhoneBook::get_valid_input_num(
 			std::string prompt, std::string& input){
 	while (1){
 		std::cout << CYAN << prompt << RESET;
 		w_getline(input);
-		if (input.empty()){
+		if (input.empty() || check_blank(input)){
 			std::cout << RED << "This field is required." << RESET << std::endl;
 			continue ;
 		}else if (!check_available_num_set(input))
