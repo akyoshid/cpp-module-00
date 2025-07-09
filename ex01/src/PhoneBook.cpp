@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:27:27 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/07/09 18:26:33 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/07/09 18:31:05 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,11 +158,11 @@ std::string	PhoneBook::format_column(const std::string& str, size_t width){
 void	PhoneBook::print_raw(
 			const std::string& index, const std::string& first_name,
 			const std::string& last_name, const std::string& nickname){
-	std::cout
+	std::cout << "|"
 		<< format_column(index, 10) << "|"
 		<< format_column(first_name, 10) << "|"
 		<< format_column(last_name, 10) << "|"
-		<< format_column(nickname, 10) << std::endl;
+		<< format_column(nickname, 10) << "|" << std::endl;
 }
 
 void	PhoneBook::print_phonebook(){
