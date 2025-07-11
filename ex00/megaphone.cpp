@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 15:53:39 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/06/29 18:53:22 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/07/11 15:49:25 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 std::string	str_to_upper(std::string str){
 	for (size_t i = 0; i < str.length(); ++i){
-		str[i] = (char)std::toupper(str[i]);
+		str[i] = static_cast<char>(std::toupper(str[i]));
 	}
 	return str;
 }
