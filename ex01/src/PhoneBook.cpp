@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:27:27 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/07/09 18:31:05 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/07/11 15:16:33 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,21 +148,25 @@ int	PhoneBook::get_actual_index(int index){
 	return actual_index;
 }
 
-std::string	PhoneBook::format_column(const std::string& str, size_t width){
-	if (str.length() > width)
-		return str.substr(0, width - 1) + ".";
+void	PhoneBook::format_column(const std::string& str){
+	if (str.length() > 10)
+		std::cout << std::setw(9) << std::right << str.substr(0, 9) << ".";
 	else
-		return std::string(width - str.length(), ' ') + str;
+		std::cout << std::setw(10) << std::right << str;
 }
 
 void	PhoneBook::print_raw(
 			const std::string& index, const std::string& first_name,
 			const std::string& last_name, const std::string& nickname){
-	std::cout << "|"
-		<< format_column(index, 10) << "|"
-		<< format_column(first_name, 10) << "|"
-		<< format_column(last_name, 10) << "|"
-		<< format_column(nickname, 10) << "|" << std::endl;
+	std::cout << "|";
+	format_column(index);
+	std::cout << "|";
+	format_column(first_name);
+	std::cout << "|";
+	format_column(last_name);
+	std::cout << "|";
+	format_column(nickname);
+	std::cout << "|" << std::endl;
 }
 
 void	PhoneBook::print_phonebook(){

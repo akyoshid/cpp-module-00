@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 13:42:35 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/07/09 18:20:42 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/07/11 15:16:41 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <string>
 # include <iostream>
 # include <sstream>
+# include <iomanip>
 # include "Contact.hpp"
 # include "utils.hpp"
 # include "colors.hpp"
@@ -39,7 +40,7 @@ class	PhoneBook{
 						std::string prompt, std::string& input);
 		bool		confirm_to_del_oldest();
 		int			get_actual_index(int index);
-		std::string	format_column(const std::string& str, size_t width);
+		void		format_column(const std::string& str);
 		void		print_raw(const std::string& index,
 						const std::string& first_name,
 						const std::string& last_name,
