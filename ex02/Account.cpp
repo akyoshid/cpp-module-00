@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 20:20:11 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/07/11 14:20:33 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/07/11 16:50:47 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@ int	Account::_nbAccounts = 0;
 int	Account::_totalAmount = 0;
 int	Account::_totalNbDeposits = 0;
 int	Account::_totalNbWithdrawals = 0;
-
-Account::Account(){
-}
 
 Account::Account(int initial_deposit){
 	bool	success = false;
