@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:27:27 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/07/11 15:16:33 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/07/11 16:44:42 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ PhoneBook::PhoneBook(){
 PhoneBook::~PhoneBook(){
 }
 
-bool	PhoneBook::check_available_char_set(std::string& input){
+bool	PhoneBook::check_available_char_set(const std::string& input){
 	for (size_t i = 0; i < input.length(); ++i){
 		if (input[i] < ' ' || input[i] > '~'){
 			std::cout << RED << "Input contains unacceptable characters. "
@@ -31,7 +31,7 @@ bool	PhoneBook::check_available_char_set(std::string& input){
 	return true;
 }
 
-bool	PhoneBook::check_available_num_set(std::string& input){
+bool	PhoneBook::check_available_num_set(const std::string& input){
 	for (size_t i = 0; i < input.length(); ++i){
 		if (input[i] < '0' || input[i] > '9'){
 			std::cout << RED << "This field accepts numbers only (0-9). "
@@ -42,7 +42,7 @@ bool	PhoneBook::check_available_num_set(std::string& input){
 	return true;
 }
 
-bool PhoneBook::check_blank(std::string& input){
+bool PhoneBook::check_blank(const std::string& input){
 	for (size_t i = 0; i < input.length(); ++i){
 		if (input[i] != ' ')
 			return false;
@@ -51,7 +51,7 @@ bool PhoneBook::check_blank(std::string& input){
 }
 
 void	PhoneBook::get_valid_input_char(
-			std::string prompt, std::string& input){
+			const std::string& prompt, std::string& input){
 	while (1){
 		std::cout << CYAN << prompt << RESET;
 		w_getline(input);
@@ -66,7 +66,7 @@ void	PhoneBook::get_valid_input_char(
 }
 
 void	PhoneBook::get_valid_input_num(
-			std::string prompt, std::string& input){
+			const std::string& prompt, std::string& input){
 	while (1){
 		std::cout << CYAN << prompt << RESET;
 		w_getline(input);
@@ -80,7 +80,7 @@ void	PhoneBook::get_valid_input_num(
 	}
 }
 
-bool	PhoneBook::confirm_to_del_oldest(){
+bool	PhoneBook::confirm_to_del_oldest() const{
 	std::cout
 		<< YELLOW << "The phonebook is full.\nThe oldest contact is:\n" << RESET
 		<< "First name: " << contact[oldest_index].get_first_name() << "\n"
@@ -138,14 +138,11 @@ void	PhoneBook::add_contact(){
 		<< RESET << std::endl;
 }
 
-int	PhoneBook::get_actual_index(int index){
-	int	actual_index;
-
+int	PhoneBook::get_actual_index(int index) const{
 	if (oldest_index + index < 8)
-		actual_index = oldest_index + index;
+		return oldest_index + index;
 	else
-		actual_index = (oldest_index + index) % 8;
-	return actual_index;
+		return (oldest_index + index) % 8;
 }
 
 void	PhoneBook::format_column(const std::string& str){
@@ -169,15 +166,14 @@ void	PhoneBook::print_raw(
 	std::cout << "|" << std::endl;
 }
 
-void	PhoneBook::print_phonebook(){
+void	PhoneBook::print_phonebook() const{
 	std::cout << BOLD;
 	print_raw("Index", "First name", "Last name", "Nickname");
 	std::cout << RESET;
 	for (int i = 0; i < contact_count; ++i){
 		std::ostringstream ss;
 		ss << i;
-		int actual_index;
-		actual_index = get_actual_index(i);
+		int actual_index = get_actual_index(i);
 		print_raw(std::string(ss.str()),
 			contact[actual_index].get_first_name(),
 			contact[actual_index].get_last_name(),
@@ -185,7 +181,7 @@ void	PhoneBook::print_phonebook(){
 	}
 }
 
-int	PhoneBook::get_index(){
+int	PhoneBook::get_index() const{
 	while (1){
 		std::cout << CYAN << "Please enter the index of the contact: " << RESET;
 		std::string input;
@@ -211,7 +207,7 @@ int	PhoneBook::get_index(){
 	}
 }
 
-void	PhoneBook::print_contact(int index){
+void	PhoneBook::print_contact(int index) const{
 	int	actual_index = get_actual_index(index);
 	std::cout
 		<< BOLD << "First name:     " << RESET
@@ -226,7 +222,7 @@ void	PhoneBook::print_contact(int index){
 		<< contact[actual_index].get_secret() << std::endl;
 }
 
-void	PhoneBook::search_contact(){
+void	PhoneBook::search_contact() const{
 	if (contact_count == 0){
 		std::cout << YELLOW << "Phonebook is empty." << RESET << std::endl;
 		return ;

@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 19:05:20 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/07/09 14:45:04 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/07/11 15:53:43 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,22 @@ void	Contact::set_secret(const std::string& s){
 	secret = s;
 }
 
-std::string	Contact::get_first_name(){
+std::string	Contact::get_first_name() const{
 	return first_name;
 }
 
-std::string	Contact::get_last_name(){
+std::string	Contact::get_last_name() const{
 	return last_name;
 }
 
-std::string	Contact::get_nickname(){
+std::string	Contact::get_nickname() const{
 	return nickname;
 }
 
-std::string	Contact::get_phone_num(){
+std::string	Contact::get_phone_num() const{
 	return phone_num;
 }
 
-std::string	Contact::get_secret(){
+std::string	Contact::get_secret() const{
 	return secret;
 }
