@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 20:20:11 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/07/11 14:12:12 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/07/11 14:20:33 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ Account::Account(){
 Account::Account(int initial_deposit){
 	bool	success = false;
 	if (initial_deposit < 0
-		|| getNbAccounts() == std::numeric_limits<int>::max()
-		|| getTotalAmount() > std::numeric_limits<int>::max() - initial_deposit){
+		|| _nbAccounts == std::numeric_limits<int>::max()
+		|| _totalAmount > std::numeric_limits<int>::max() - initial_deposit){
 		_accountIndex = -1;
 		_amount = 0;
 	}else{
